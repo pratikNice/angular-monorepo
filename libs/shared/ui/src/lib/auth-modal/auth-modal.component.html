@@ -1,0 +1,20 @@
+<mat-dialog-content>
+    <h2 mat-dialog-title>{{ isLoginMode ? 'Login' : 'Signup' }}</h2>
+    <mat-form-field appearance="fill">
+      <mat-label>Username</mat-label>
+      <input matInput [(ngModel)]="username" />
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Password</mat-label>
+      <input matInput type="password" [(ngModel)]="password" />
+    </mat-form-field>
+    <div class="modal-actions">
+      <button mat-raised-button color="primary" (click)="authenticate()">
+        {{ isLoginMode ? 'Login' : 'Signup' }}
+      </button>
+      <button mat-button color="accent" (click)="switchMode()">
+        Switch to {{ isLoginMode ? 'Signup' : 'Login' }}
+      </button>
+    </div>
+  </mat-dialog-content>
+  

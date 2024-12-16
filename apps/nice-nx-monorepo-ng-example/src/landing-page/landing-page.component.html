@@ -1,0 +1,31 @@
+<nav>
+    <div class="navbar">
+      <div class="navbar-brand">Gift Ideas</div>
+      <div class="navbar-end">
+        <ng-container *ngIf="isLoggedIn; else loginSignup">
+          <div class="user-thumbnail">{{ userInitials }}</div>
+        </ng-container>
+        <ng-template #loginSignup>
+          <button (click)="openModal('login')">Login</button>
+          <button (click)="openModal('signup')">Signup</button>
+        </ng-template>
+      </div>
+    </div>
+  </nav>
+  <div class="container">
+    <h1>Dashboard</h1>
+    <ul>
+      <li *ngFor="let idea of giftIdeas">{{ idea }}</li>
+    </ul>
+    <input [(ngModel)]="newIdea" placeholder="Add a new idea" />
+    <button (click)="addIdea()">Add Idea</button>
+  </div>
+  <div *ngIf="showModal" class="modal">
+    <div class="modal-content">
+      <button class="close" tabindex="0" (click)="closeModal()" (keydown)="handleKeydown($event)">&times;</button>
+      <h2>{{ modalType === 'login' ? 'Login' : 'Signup' }}</h2>
+      <input [(ngModel)]="username" placeholder="Username" />
+      <input [(ngModel)]="password" type="password" placeholder="Password" />
+      <button (click)="modalType === 'login' ? login() : signup()">{{ modalType === 'login' ? 'Login' : 'Signup' }}</button>
+    </div>
+  </div>

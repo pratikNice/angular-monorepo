@@ -1,0 +1,15 @@
+<mat-toolbar color="primary" class="navbar">
+    <span class="navbar-title">Gift Ideas</span>
+    <div class="navbar-actions">
+      <ng-container *ngIf="!isLoggedIn; else userMenu">
+        <button mat-button color="accent" (click)="loginClicked.emit()">Login</button>
+        <button mat-raised-button color="accent" (click)="loginClicked.emit()">Signup</button>
+      </ng-container>
+      <ng-template #userMenu>
+        <button mat-icon-button (click)="logout()">
+          <mat-icon>account_circle</mat-icon>
+        </button>
+      </ng-template>
+    </div>
+  </mat-toolbar>
+  

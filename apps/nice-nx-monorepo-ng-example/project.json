@@ -22,7 +22,10 @@
             "input": "apps/nice-nx-monorepo-ng-example/public"
           }
         ],
-        "styles": ["apps/nice-nx-monorepo-ng-example/src/styles.scss"],
+        "styles": [
+          "apps/nice-nx-monorepo-ng-example/src/styles.scss",
+          "node_modules/@angular/material/prebuilt-themes/indigo-pink.css"
+        ],
         "scripts": []
       },
       "configurations": {

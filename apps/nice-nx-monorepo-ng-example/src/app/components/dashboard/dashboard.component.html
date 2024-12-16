@@ -1,0 +1,22 @@
+<lib-navbar
+  [isLoggedIn]="authService.isLoggedIn"
+  [userInitials]="authService.userInitials"
+  (loginClicked)="authService.showAuthModal()"
+></lib-navbar>
+
+<div class="dashboard">
+  <h1>Gift Ideas</h1>
+
+  <mat-card class="gift-card" *ngFor="let idea of giftIdeas">
+    <mat-card-title>{{ idea.name }}</mat-card-title>
+    <mat-card-content>{{ idea.description || 'No description provided.' }}</mat-card-content>
+  </mat-card>
+
+  <mat-card class="add-idea-card">
+    <mat-form-field appearance="fill" class="idea-input">
+      <mat-label>Add a Gift Idea</mat-label>
+      <input matInput placeholder="Gift name" [(ngModel)]="newGiftIdea" />
+    </mat-form-field>
+    <button mat-raised-button color="primary" (click)="addIdea()">Add Idea</button>
+  </mat-card>
+</div>
