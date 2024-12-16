@@ -1,0 +1,92 @@
+{
+  "name": "nice-nx-monorepo-ng-example",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "projectType": "application",
+  "prefix": "app",
+  "sourceRoot": "apps/nice-nx-monorepo-ng-example/src",
+  "tags": [],
+  "targets": {
+    "build": {
+      "executor": "@angular-devkit/build-angular:browser",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/apps/nice-nx-monorepo-ng-example",
+        "index": "apps/nice-nx-monorepo-ng-example/src/index.html",
+        "main": "apps/nice-nx-monorepo-ng-example/src/main.ts",
+        "polyfills": ["zone.js"],
+        "tsConfig": "apps/nice-nx-monorepo-ng-example/tsconfig.app.json",
+        "inlineStyleLanguage": "scss",
+        "assets": [
+          {
+            "glob": "**/*",
+            "input": "apps/nice-nx-monorepo-ng-example/public"
+          }
+        ],
+        "styles": ["apps/nice-nx-monorepo-ng-example/src/styles.scss"],
+        "scripts": []
+      },
+      "configurations": {
+        "production": {
+          "budgets": [
+            {
+              "type": "initial",
+              "maximumWarning": "500kb",
+              "maximumError": "1mb"
+            },
+            {
+              "type": "anyComponentStyle",
+              "maximumWarning": "4kb",
+              "maximumError": "8kb"
+            }
+          ],
+          "outputHashing": "all"
+        },
+        "development": {
+          "buildOptimizer": false,
+          "optimization": false,
+          "vendorChunk": true,
+          "extractLicenses": false,
+          "sourceMap": true,
+          "namedChunks": true
+        }
+      },
+      "defaultConfiguration": "production"
+    },
+    "serve": {
+      "executor": "@angular-devkit/build-angular:dev-server",
+      "configurations": {
+        "production": {
+          "buildTarget": "nice-nx-monorepo-ng-example:build:production"
+        },
+        "development": {
+          "buildTarget": "nice-nx-monorepo-ng-example:build:development"
+        }
+      },
+      "defaultConfiguration": "development"
+    },
+    "extract-i18n": {
+      "executor": "@angular-devkit/build-angular:extract-i18n",
+      "options": {
+        "buildTarget": "nice-nx-monorepo-ng-example:build"
+      }
+    },
+    "lint": {
+      "executor": "@nx/eslint:lint"
+    },
+    "test": {
+      "executor": "@nx/jest:jest",
+      "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
+      "options": {
+        "jestConfig": "apps/nice-nx-monorepo-ng-example/jest.config.ts"
+      }
+    },
+    "serve-static": {
+      "executor": "@nx/web:file-server",
+      "options": {
+        "buildTarget": "nice-nx-monorepo-ng-example:build",
+        "port": 4200,
+        "spa": true
+      }
+    }
+  }
+}
