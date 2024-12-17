@@ -1,0 +1,7 @@
+<lib-navbar
+  [isLoggedIn]="authService.isLoggedIn"
+  [userInitials]="authService.userInitials"
+  (loginClicked)="authService.showAuthModal()"
+></lib-navbar>
+<app-nx-admin-welcome></app-nx-admin-welcome>
+<router-outlet></router-outlet>
