@@ -1,4 +1,10 @@
 <!-- <app-nx-welcome></app-nx-welcome> -->
  <!-- <app-landing-page></app-landing-page> -->
   <!-- <app-dashboard></app-dashboard> -->
+<lib-navbar
+  [isLoggedIn]="authService.isLoggedIn"
+  [userInitials]="authService.userInitials"
+  (loginClicked)="authService.showAuthModal()"
+>
+</lib-navbar>
 <router-outlet></router-outlet>

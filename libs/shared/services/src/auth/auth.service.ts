@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { AuthModalComponent } from '@nice-nx-monorepo-ng-example/shared/ui';
+import { AuthModalComponent } from '@angular-monorepo/shared/ui';
+import { Router } from '@angular/router';
 
 @Injectable({ providedIn: 'root' })
 export class AuthService {
@@ -8,7 +9,7 @@ export class AuthService {
   public isLoggedIn = false;
   public userInitials: string | null = null;
 
-  constructor(private dialog: MatDialog) {}
+  constructor(private dialog: MatDialog,private router: Router) {}
 
   signup(username: string, password: string) {
     if (!this.users[username]) {
@@ -24,6 +25,7 @@ export class AuthService {
       this.isLoggedIn = true;
       this.userInitials = username[0].toUpperCase();
       alert('Login successful!');
+        this.router.navigate(['/dashboard']);
     } else {
       alert('Invalid credentials!');
     }
@@ -32,12 +34,13 @@ export class AuthService {
   logout() {
     this.isLoggedIn = false;
     this.userInitials = null;
+    this.router.navigate(['/']);
   }
 
   showAuthModal() {
     // Show modal logic here
     this.dialog.open(AuthModalComponent, {
-        width: '400px',
+        width: '450px',
       });
   }
 }

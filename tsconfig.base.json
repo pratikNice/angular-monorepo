@@ -15,8 +15,11 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@nice-nx-monorepo-ng-example/shared/ui": ["libs/shared/ui/src/index.ts"],
-      "@nice-nx-monorepo-ng-example/shared/services": ["libs/shared/services/src/index.ts"],
+      "@angular-monorepo/shared/services": [
+        "libs/shared/services/src/index.ts"
+      ],
+      "@angular-monorepo/shared/ui": ["libs/shared/ui/src/index.ts"],
+      "@admin/*": ["apps/admin/src/*"],
     }
   },
   "exclude": ["node_modules", "tmp"]

@@ -1,25 +1,7 @@
 import { Component, EventEmitter, Input, Output, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { AuthService } from '@nice-nx-monorepo-ng-example/shared/services'; 
-
-import { MatToolbarModule } from '@angular/material/toolbar';
-import { MatButtonModule } from '@angular/material/button';
-import { MatInputModule } from '@angular/material/input';
-import { MatCardModule } from '@angular/material/card';
-import { MatDialogModule } from '@angular/material/dialog';
-import { MatIconModule } from '@angular/material/icon';
-import { MatListModule } from '@angular/material/list';
-
-
-const materialModules = [
-  MatToolbarModule,
-  MatButtonModule,
-  MatInputModule,
-  MatCardModule,
-  MatDialogModule,
-  MatIconModule,
-  MatListModule,
-];
+import { AuthService } from '@angular-monorepo/shared/services'; 
+import { materialModules } from '../material-modules';
 
 @Component({
   selector: 'lib-navbar',

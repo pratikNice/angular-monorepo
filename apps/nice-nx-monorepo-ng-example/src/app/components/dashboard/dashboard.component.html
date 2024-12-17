@@ -1,15 +1,10 @@
-<lib-navbar
-  [isLoggedIn]="authService.isLoggedIn"
-  [userInitials]="authService.userInitials"
-  (loginClicked)="authService.showAuthModal()"
-></lib-navbar>
 
 <div class="dashboard">
   <h1>Gift Ideas</h1>
 
   <mat-card class="gift-card" *ngFor="let idea of giftIdeas">
     <mat-card-title>{{ idea.name }}</mat-card-title>
-    <mat-card-content>{{ idea.description || 'No description provided.' }}</mat-card-content>
+    <!-- <mat-card-content>{{ idea.description || 'No description provided.' }}</mat-card-content> -->
   </mat-card>
 
   <mat-card class="add-idea-card">
